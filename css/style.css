@@ -51,6 +51,7 @@ body {
 }
 
 .dold { display: none !important; }
+.osynlig { visibility: hidden; }  /* tar plats men syns inte, så att inget hoppar */
 
 /* Siffror ska aldrig tvinga fram horisontell scroll */
 .siffror {
@@ -156,3 +157,174 @@ a.ruta:hover, a.ruta:focus-visible { background: #eaf1fd; outline: none; }
 }
 
 .tillbaka:hover { color: var(--text); }
+
+/* ---- Multiplikation: inställningar ---- */
+.valrad--tid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.valrad--tid .val { min-width: 0; padding: 8px 4px; }
+
+.intervall {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: start;
+  align-items: center;
+  gap: 10px 14px;
+}
+
+@media (max-width: 440px) {
+  .intervall { grid-template-columns: auto; }
+}
+
+.intervall__till { font-size: 20px; font-weight: 700; }
+
+.stegare {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.steg {
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--gra);
+  color: var(--text);
+  font: inherit;
+  font-size: 26px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.steg:hover { background: #d6dde7; }
+
+.talruta {
+  width: 5.5ch;
+  min-width: 64px;
+  height: 48px;
+  border: 3px solid var(--kant);
+  border-radius: 10px;
+  background: var(--yta);
+  color: var(--text);
+  font: inherit;
+  font-size: 22px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.talruta:focus { border-color: var(--accent); outline: none; }
+
+.exempel {
+  margin: 0;
+  color: var(--text-svag);
+  font-weight: 600;
+}
+
+/* ---- Multiplikation: omgång ---- */
+.sida--omgang { padding-top: 12px; gap: 12px; }
+
+.statusrad {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.tid--varning { color: var(--rod); }
+
+.uppgift {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: clamp(32px, 11vw, 56px);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.svarsform {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.svar {
+  align-self: center;
+  width: 100%;
+  max-width: 280px;
+  height: 64px;
+  border: 3px solid var(--accent);
+  border-radius: var(--radie);
+  background: var(--yta);
+  color: var(--text);
+  font: inherit;
+  font-size: 34px;
+  font-weight: 800;
+  text-align: center;
+  transition: background-color .15s, border-color .15s;
+}
+
+.svarsform .knapp { align-self: center; width: 100%; max-width: 280px; }
+
+.svar:focus { outline: none; box-shadow: 0 0 0 4px #cfe0fb; }
+
+.svar--ratt { border-color: var(--gron); background: var(--gron-ljus); color: var(--gron); }
+.svar--fel { border-color: var(--rod); background: var(--rod-ljus); color: var(--rod); text-decoration: line-through; }
+
+.facit {
+  margin: 0;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.facit__ratt { color: var(--gron); }
+
+/* ---- Multiplikation: sammanfattning ---- */
+.resultat {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  font-size: 44px;
+  font-weight: 800;
+}
+
+.resultat__ratt { color: var(--gron); }
+.resultat__fel { color: var(--rod); }
+
+.fel-tabell {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--yta);
+  border-radius: var(--radie);
+  overflow: hidden;
+  font-size: 20px;
+  table-layout: fixed;
+}
+
+.fel-tabell th {
+  padding: 8px 10px;
+  background: var(--gra);
+  color: var(--text-svag);
+  font-size: 15px;
+  text-align: left;
+}
+
+.fel-tabell td {
+  padding: 10px;
+  border-top: 1px solid var(--gra);
+  font-weight: 700;
+}
+
+.fel-tabell .ditt { color: var(--rod); text-decoration: line-through; }
+.fel-tabell .ratt { color: var(--gron); }
+
+.inga-fel {
+  margin: 0;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--gron);
+}

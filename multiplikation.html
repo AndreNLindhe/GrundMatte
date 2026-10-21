@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multiplikation – GrundMatte</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 1. Inställningar -->
+  <main id="vy-installningar" class="sida">
+    <a id="tillbaka" class="tillbaka" href="index.html">← Tillbaka</a>
+    <h1 class="rubrik"><span aria-hidden="true">✖️</span> Multiplikation</h1>
+
+    <p class="etikett"><span aria-hidden="true">⏱</span> Tid</p>
+    <div class="valrad valrad--tid">
+      <button type="button" class="val" data-sekunder="60">1 min</button>
+      <button type="button" class="val val--vald" data-sekunder="120">2 min</button>
+      <button type="button" class="val" data-sekunder="180">3 min</button>
+      <button type="button" class="val" data-sekunder="300">5 min</button>
+    </div>
+
+    <p class="etikett"><span aria-hidden="true">🔢</span> Tal</p>
+    <div class="intervall">
+      <div class="stegare">
+        <button type="button" id="fran-minus" class="steg" aria-label="Minska från">−</button>
+        <input id="fran" class="talruta siffror" type="text" inputmode="numeric" autocomplete="off" value="1" aria-label="Från">
+        <button type="button" id="fran-plus" class="steg" aria-label="Öka från">+</button>
+      </div>
+      <span class="intervall__till">till</span>
+      <div class="stegare">
+        <button type="button" id="till-minus" class="steg" aria-label="Minska till">−</button>
+        <input id="till" class="talruta siffror" type="text" inputmode="numeric" autocomplete="off" value="10" aria-label="Till">
+        <button type="button" id="till-plus" class="steg" aria-label="Öka till">+</button>
+      </div>
+    </div>
+    <p id="exempel" class="exempel siffror">Exempel: 4 × 7</p>
+
+    <button type="button" id="start" class="knapp knapp--start">▶ Start</button>
+  </main>
+
+  <!-- 2. Omgång -->
+  <main id="vy-omgang" class="sida sida--omgang dold">
+    <div class="statusrad siffror">
+      <span id="tid" class="tid">⏱ 2:00</span>
+      <span id="poang">⭐ 0</span>
+    </div>
+
+    <p id="uppgift" class="uppgift siffror">4 × 7 =</p>
+
+    <form id="svarsform" class="svarsform" autocomplete="off">
+      <input id="svar" class="svar siffror" type="text" inputmode="numeric" autocomplete="off"
+             enterkeyhint="done" aria-label="Svar">
+      <p id="facit" class="facit siffror osynlig">&nbsp;</p>
+      <button type="submit" id="svara" class="knapp knapp--start">✓ Svara</button>
+    </form>
+  </main>
+
+  <!-- 3. Sammanfattning -->
+  <main id="vy-klart" class="sida dold">
+    <h1 class="rubrik">Klart! <span aria-hidden="true">🎉</span></h1>
+
+    <div class="resultat siffror">
+      <span id="antal-ratt" class="resultat__ratt">✓ 0</span>
+      <span id="antal-fel" class="resultat__fel">✗ 0</span>
+    </div>
+
+    <table id="fel-tabell" class="fel-tabell siffror">
+      <thead>
+        <tr><th>Uppgift</th><th>Ditt svar</th><th>Rätt</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p id="inga-fel" class="inga-fel dold">Inga fel! <span aria-hidden="true">💪</span></p>
+
+    <div class="knappar">
+      <button type="button" id="igen" class="knapp knapp--start">↻ Igen</button>
+      <button type="button" id="andra" class="knapp knapp--sekundar">⚙ Ändra</button>
+    </div>
+  </main>
+
+  <script src="js/multiplikation-logik.js"></script>
+  <script src="js/multiplikation.js"></script>
+</body>
+</html>
