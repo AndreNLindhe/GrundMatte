@@ -13,6 +13,7 @@ let omgang = null;          // pågående omgång, annars null
 let resultat = null;        // senaste avslutade omgång
 let intervall = null;
 let timeouts = [];
+let blink = null;           // det korta gröna blinket vid rätt svar
 
 // ---------- Vyer ----------
 
@@ -139,6 +140,7 @@ function stoppaOmgang() {
   clearInterval(intervall);
   timeouts.forEach(clearTimeout);
   timeouts = [];
+  clearTimeout(blink);
   omgang = null;
 }
 
@@ -163,11 +165,24 @@ $('svarsform').addEventListener('submit', (e) => {
   const svarRuta = $('svar');
   svarRuta.focus();
 
+  const facit = $('facit');
+  clearTimeout(blink);
+
   if (svar === a * b) {
     omgang.ratt++;
     $('poang').textContent = '⭐ ' + omgang.ratt;
     svarRuta.classList.add('svar--ratt');
-    efter(RATT_BLINK_MS, () => svarRuta.classList.remove('svar--ratt'));
+    // Bocken gör att rätt svar syns även utan att man ser färgen.
+    facit.replaceChildren();
+    const bock = document.createElement('span');
+    bock.className = 'facit__ratt';
+    bock.textContent = '✓';
+    facit.appendChild(bock);
+    facit.classList.remove('osynlig');
+    blink = setTimeout(() => {
+      svarRuta.classList.remove('svar--ratt');
+      facit.classList.add('osynlig');
+    }, RATT_BLINK_MS);
     visaUppgift();
     return;
   }
@@ -176,7 +191,6 @@ $('svarsform').addEventListener('submit', (e) => {
   omgang.pausar = true;
   svarRuta.classList.remove('svar--ratt');
   svarRuta.classList.add('svar--fel');
-  const facit = $('facit');
   facit.textContent = a + ' × ' + b + ' = ';
   const ratt = document.createElement('span');
   ratt.className = 'facit__ratt';
