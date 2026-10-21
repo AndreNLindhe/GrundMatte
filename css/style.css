@@ -1,0 +1,158 @@
+/* Gemensam stil för alla verktyg i GrundMatte */
+
+:root {
+  --accent: #2f6fdf;
+  --gron: #1f9d55;
+  --gron-ljus: #e3f6ea;
+  --rod: #d64545;
+  --rod-ljus: #fdeaea;
+  --text: #1d2633;
+  --text-svag: #5b6676;
+  --bakgrund: #f4f6fa;
+  --yta: #ffffff;
+  --kant: #d5dbe3;
+  --gra: #e3e8ef;
+  --radie: 12px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bakgrund);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.sida {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rubrik {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.etikett {
+  margin: 8px 0 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-svag);
+}
+
+.dold { display: none !important; }
+
+/* Siffror ska aldrig tvinga fram horisontell scroll */
+.siffror {
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+/* Verktygsrutor på landningssidan */
+.ruta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 72px;
+  padding: 16px 20px;
+  background: var(--yta);
+  border: 3px solid var(--accent);
+  border-radius: var(--radie);
+  color: var(--text);
+  font-size: 24px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+a.ruta:hover, a.ruta:focus-visible { background: #eaf1fd; outline: none; }
+
+.ruta--snart {
+  border-color: var(--kant);
+  color: #9aa4b1;
+  cursor: default;
+}
+
+.ruta__ikon { font-size: 30px; }
+.ruta--snart .ruta__ikon { filter: grayscale(1); opacity: .5; }
+
+.ruta__snart {
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Knappar */
+.knapp {
+  min-height: 56px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: var(--radie);
+  font: inherit;
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.knapp:focus-visible, .val:focus-visible, .steg:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.knapp--start { background: var(--gron); color: #fff; }
+.knapp--start:hover { background: #198a4a; }
+.knapp--sekundar { background: var(--gra); color: var(--text); }
+.knapp--sekundar:hover { background: #d6dde7; }
+
+.knappar {
+  display: flex;
+  gap: 10px;
+}
+
+.knappar .knapp { flex: 1; }
+
+/* Valknappar (t.ex. tid) */
+.valrad {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.val {
+  min-height: 48px;
+  min-width: 80px;
+  padding: 8px 14px;
+  background: var(--yta);
+  border: 3px solid var(--kant);
+  border-radius: 10px;
+  color: var(--text);
+  font: inherit;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.val--vald {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.tillbaka {
+  align-self: flex-start;
+  color: var(--text-svag);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 8px 0;
+}
+
+.tillbaka:hover { color: var(--text); }
